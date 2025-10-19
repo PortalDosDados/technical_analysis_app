@@ -31,11 +31,12 @@ df_long['Id'] = range(1, len(df_long) + 1)
 df_long = df_long[['Id', 'Ticker', 'Data', 'Abertura', 'Fechamento', 'Volume']]
 
 # Salvar em CSV
-#df_long.to_csv('dados_historicos.csv', index=False)
+df_long.to_csv('dados_historicos.csv', index=False)
 
 # Exibir os primeiros registros
 #print(df_long.head())
 
+'''
 # Plotar os dados de fechamento
 plt.figure(figsize=(12, 6))
 for ticker in tickers:
@@ -46,3 +47,4 @@ plt.ylabel('Preço de Fechamento (R$)')
 plt.grid(True)
 plt.legend()
 plt.show()
+'''
