@@ -1,20 +1,29 @@
-#Importando bibliotecas necessárias
 import yfinance as yf
 import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 
-#Definindo parametros
-tickers = ['AAPL', 'MSFT', 'GOOGL']  # Lista de tickers para baixar
-start_date = '2023-01-01'  # Data de início
-end_date = '2023-12-31'    # Data de fim
 
-#Função para baixar cotações
+tickers = 'BBAS3.SA', 'VALE3.SA'
+start_date = '2020-01-01'
+end_date = '2025-10-19'
 
 df = yf.download(tickers, start=start_date, end=end_date)
 
+# Convertendo para formato longo
 df_long = df.stack(level=1).reset_index()
 
-df_long.columns = ['Date', 'Ticker', 'Open', 'Close', 'Volume']
-#Exibindo as primeiras linhas do DataFrame resultante
+df_long = df_long.rename(columns={
+    'Date': 'Data',
+    'Open': 'Abertura',
+    'Close': 'Fechamento',
+    'High': 'Máxima',
+    'Low': 'Mínima',
+    'Volume': 'Volume'
+})
+
+df_long = df_long[['Data', 'Ticker', 'Abertura', 'Fechamento', 'Volume']]
+
+
 print(df_long.head())
+
