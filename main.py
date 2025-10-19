@@ -5,7 +5,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Definir parâmetros
-tickers = ['BBSE3.SA']
+tickers = ['BBSE3.SA', 'BBAS3.SA', 'ITUB3.SA', 'PETR4.SA', 'VALE3.SA']
 start_date = '2020-01-01'
 end_date = '2025-10-19'
 
@@ -36,15 +36,3 @@ df_long.to_csv('dados_historicos.csv', index=False)
 # Exibir os primeiros registros
 #print(df_long.head())
 
-'''
-# Plotar os dados de fechamento
-plt.figure(figsize=(12, 6))
-for ticker in tickers:
-    subset = df_long[df_long['Ticker'] == ticker]
-    plt.plot(subset['Data'], subset['Fechamento'], label=ticker)
-plt.title(f'Preços de Fechamento Históricos - {tickers[0]}')
-plt.ylabel('Preço de Fechamento (R$)')
-plt.grid(True)
-plt.legend()
-plt.show()
-'''
