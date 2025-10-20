@@ -25,8 +25,8 @@ df_long = df_long.rename(columns={
 df_long = df_long[['Data', 'Ticker', 'Abertura', 'Fechamento', 'Volume']]
 
 
-df_long.to_csv('cotacoes.csv', index=False)
+#df_long.to_csv('cotacoes.csv', index=False)
 
 
-#print(df_long.head())
+print(df_long.head())
 
