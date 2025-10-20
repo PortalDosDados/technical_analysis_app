@@ -4,4 +4,27 @@ import matplotlib.pyplot as plt
 # Importar dados de CSV
 data = pd.read_csv('cotacoes.csv')
 
-print(data.head())
+#print(data.head())
+
+# Criar coluna de id
+data['id'] = range(1, len(data) + 1)
+
+# Converter para datetime
+data['Data'] = pd.to_datetime(data['Data'], errors='coerce')  # errors='coerce' transforma valores inválidos em NaT
+
+# Agora formatar para exibição como dia/mês/ano
+data['Data_formatada'] = data['Data'].dt.strftime('%d/%m/%Y')
+
+# remover coluna antiga
+data = data.drop(columns=['Data'])
+
+# alterar titulo das colunas
+data = data.rename(columns={
+    'Ticker': 'ticker',
+    'Data_formatada': 'data',
+    'Abertura': 'abertura',
+    'Fechamento': 'fechamento',
+    'Volume': 'volume'
+})
+
+data.to_excel('cotacoes_formatado.xlsx', index=False)
