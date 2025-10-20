@@ -1,9 +1,7 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
-# Importar dados de csv
-
+# Importar dados de CSV
 data = pd.read_csv('cotacoes.csv')
 
 print(data.head())
