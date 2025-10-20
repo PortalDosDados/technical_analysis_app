@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+'''
+
 # Importar dados de CSV
 data = pd.read_csv('cotacoes.csv')
 
@@ -27,4 +29,19 @@ data = data.rename(columns={
     'Volume': 'volume'
 })
 
+# Ordenar colunas
+data = data[['id', 'ticker', 'data', 'abertura', 'fechamento', 'volume']]
+
+#print(data.head())
+
 data.to_excel('cotacoes_formatado.xlsx', index=False)
+'''
+# Importar dados de CSV em formato longo
+data = pd.read_csv('cotacoes_long_format.csv')
+
+# Alterar formato da data
+data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
+
+data['Date'] = data['Date'].dt.strftime('%d/%m/%Y')
+
+print(data.head())
