@@ -5,7 +5,7 @@ warnings.filterwarnings("ignore")
 
 
 tickers = 'BBAS3.SA', 'VALE3.SA'
-start_date = '2020-01-01'
+start_date = '2000-01-01'
 end_date = '2025-10-19'
 
 df = yf.download(tickers, start=start_date, end=end_date)
@@ -25,5 +25,8 @@ df_long = df_long.rename(columns={
 df_long = df_long[['Data', 'Ticker', 'Abertura', 'Fechamento', 'Volume']]
 
 
-print(df_long.head())
+df_long.to_csv('cotacoes.csv', index=False)
+
+
+#print(df_long.head())
 
