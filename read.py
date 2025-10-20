@@ -71,3 +71,19 @@ data.to_excel('cotacoes_formatado_2.xlsx', index=False)
 # Importar dados de Excel
 data_1 = pd.read_excel('cotacoes_formatado.xlsx',)
 data_2 = pd.read_excel('cotacoes_formatado_2.xlsx',)
+
+# Concatenar os dois dataframes
+data_concat = pd.concat([data_1, data_2], ignore_index=True)
+
+# Contar número de linhas antes de remover duplicatas
+print(f"Número de linhas antes de remover duplicatas: {len(data_concat)}")
+
+# Contar número de duplicatas
+num_duplicatas = data_concat.duplicated(subset=['ticker', 'data']).sum()
+
+print(f"Número de duplicatas encontradas: {num_duplicatas}")
+
+# Remover duplicatas
+#data_concat = data_concat.drop_duplicates(subset=['ticker', 'data'], keep='first').reset_index(drop=True)
+
+#print(data_concat.head())
