@@ -36,12 +36,38 @@ data = data[['id', 'ticker', 'data', 'abertura', 'fechamento', 'volume']]
 
 data.to_excel('cotacoes_formatado.xlsx', index=False)
 '''
+
+
+'''
+
 # Importar dados de CSV em formato longo
 data = pd.read_csv('cotacoes_long_format.csv')
 
 # Alterar formato da data
 data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 
+# Formatar data para dia/mês/ano
 data['Date'] = data['Date'].dt.strftime('%d/%m/%Y')
 
-print(data.head())
+# Renomear colunas
+data = data.rename(columns={
+    'Ticker': 'ticker',
+    'Date': 'data',
+    'Close': 'fechamento',
+    'Open': 'abertura',
+    'Volume': 'volume'
+})
+
+data['id'] = range(1, len(data) + 1)
+
+data = data[['id','ticker', 'data', 'abertura', 'fechamento', 'volume']]
+
+data.to_excel('cotacoes_formatado_2.xlsx', index=False)
+
+#print(data.head())
+
+'''
+
+# Importar dados de Excel
+data_1 = pd.read_excel('cotacoes_formatado.xlsx',)
+data_2 = pd.read_excel('cotacoes_formatado_2.xlsx',)
