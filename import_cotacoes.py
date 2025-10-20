@@ -27,6 +27,5 @@ df_long = df_long[['Data', 'Ticker', 'Abertura', 'Fechamento', 'Volume']]
 
 #df_long.to_csv('cotacoes.csv', index=False)
 
-
-print(df_long.head())
+#print(df_long.head())
 
